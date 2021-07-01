@@ -57,10 +57,10 @@ As a user you can easily access the GraphQL UI. Just add `/graphql` to the hostn
 The easiest way to get an access token is to go on the web page, enter developer mode and copy the `Authorization` header. 
 See image below:
 
-![](./images/dev-tool-token.png)
+![](https://github.com/spoud/agoora-integration-examples/raw/master/graphql-example/images/dev-tool-token.png)
 
 Once you have the token, you can include it in the Http Header in the UI. See image below:
-![](./images/token-in-ui.png)
+![](https://github.com/spoud/agoora-integration-examples/raw/master/graphql-example/images/token-in-ui.png)
 
 /!\ Be aware that the access token is very limited in time. You cannot use it for too long. At some point you will get
 error (be aware that the UI is not really explicit...). You can just repeat the process of getting the token.
