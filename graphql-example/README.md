@@ -48,19 +48,6 @@ You can now open it and replace the organization and user credentials with the o
 
 This application should create a user group called `test-group` and assign any users of the organization to it. 
 
-
-### Post a request to Agoora:
-
-In order to post a request to Agoora, it is then necessary to fetch the bearer token from the previous section, then simply making a POST in REST respecting the GraphQL API format.
-The following is an example of code which can be integrated from POJO objects.
-
-
-```class linenums="1"
---8<-- "repo/sdm-agoora-examples/graphql-api/src/main/java/io/spoud/sdm/graphql/caller/CallerJobCron.java"
-```
-
-
-
 ## GraphQL User interface
 
 As a user you can easily access the GraphQL UI. Just add `/graphql` to the hostname. For example: https://app.agoora.com/graphql
