@@ -1,54 +1,93 @@
-# graphql-example project
+# GraphQL API to communicate with Agoora
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+See https://github.com/spoud/agoora-integration-examples/tree/master/graphql-example for the code.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Introduction
 
-## Running the application in dev mode
+This is a short guide, which can serve as an example, in order to communicate with the Agoora service in an API.
+Please remember that Agoora is constantly evolving its service by introducing new functionalities, therefore the data 
+structure can change in time. Therefore, always base yourself on the official documentation to make sure you are up 
+to date with the latest modifications. Also, this is just an overview of a couple of examples. We will not focus on 
+the various types of queries, as they are all well documented elsewhere. Ask Spoud for the current version documentation when needed.
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
+This will serve as a proof of concept, not to demonstrate best practice when it comes to coding.
+
+The technologies used in the first part are Java with Quarkus Framework and Maven
+
+## Compilation
+
+```
+./mvnw clean package
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+## Running
 
-## Packaging and running the application
+### Create an organization
 
-The application can be packaged using:
-```shell script
-./mvnw package
+If you're not part of any organization, you can easily create one. For this go in *Admin* and then *Organization*.
+
+### Create an agent
+
+You can use your personal user as login, but we strongly recommend creating an Agent instead. You can see the agent
+as a technical user that can be used by applications. For this just go in the *Admin* panel and then *Agent*.
+
+### Configure your environment
+Copy the .env example file
+
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
+cp .env.example .env
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+You can now open it and replace the organization and user credentials with the one that you just created.
+
+### Running quarkus in dev mode
+
+```
+./mvnw quarkus:dev
 ```
 
-You can then execute your native executable with: `./target/graphql-example-1.0.0-SNAPSHOT-runner`
+This application should create a user group called `test-group` and assign any users of the organization to it. 
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
 
-## Provided examples
+### Post a request to Agoora:
 
-### RESTEasy JAX-RS example
+In order to post a request to Agoora, it is then necessary to fetch the bearer token from the previous section, then simply making a POST in REST respecting the GraphQL API format.
+The following is an example of code which can be integrated from POJO objects.
 
-REST is easy peasy with this Hello World RESTEasy resource.
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+```class linenums="1"
+--8<-- "repo/sdm-agoora-examples/graphql-api/src/main/java/io/spoud/sdm/graphql/caller/CallerJobCron.java"
+```
+
+
+
+## GraphQL User interface
+
+As a user you can easily access the GraphQL UI. Just add `/graphql` to the hostname. For example: https://app.agoora.com/graphql
+
+### Getting the authentication token
+
+The easiest way to get an access token is to go on the web page, enter developer mode and copy the `Authorization` header. 
+See image below:
+
+![](./images/dev-tool-token.png)
+
+Once you have the token, you can include it in the Http Header in the UI. See image below:
+![](./images/token-in-ui.png)
+
+/!\ Be aware that the access token is very limited in time. You cannot use it for too long. At some point you will get
+error (be aware that the UI is not really explicit...). You can just repeat the process of getting the token.
+
+Once in the UI you can play around with the API. Normally the autocompletion should help you.
+
+You can for example try to get your info by entering:
+```graphql
+query{
+  currentUser{
+    id
+    firstName
+    lastName
+    organizations
+  }
+}
+```
