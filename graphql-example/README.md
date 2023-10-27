@@ -31,6 +31,9 @@ If you're not part of any organization, you can easily create one. For this go i
 You can use your personal user as login, but we strongly recommend creating an Agent instead. You can see the agent
 as a technical user that can be used by applications. For this just go in the *Admin* panel and then *Agent*.
 
+**Note: The agent needs to have the right permissions. For this example it needs to be set to the path of the organizatio
+in order to list groups and create users**
+
 ### Configure your environment
 Copy the .env example file
 
