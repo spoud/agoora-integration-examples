@@ -15,9 +15,8 @@
 
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <!-- TODO: there are some more todos when using a release again! -->
-        <quarkus-plugin.version>999-SNAPSHOT</quarkus-plugin.version>
-        <quarkus.platform.version>999-SNAPSHOT</quarkus.platform.version>
+        <quarkus-plugin.version>3.6.3</quarkus-plugin.version>
+        <quarkus.platform.version>3.6.3</quarkus.platform.version>
 
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
@@ -34,16 +33,6 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <dependency> <!-- TODO remove once quarkus-oidc-client-graphql is in a release -->
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-core</artifactId>
-            <version>999-SNAPSHOT</version>
-        </dependency>
-        <dependency> <!-- TODO remove once quarkus-oidc-client-graphql is in a release -->
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-core-deployment</artifactId>
-            <version>999-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
@@ -55,42 +44,30 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-graphql-client</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc-client</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc-common</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
-        </dependency>
-        <dependency> <!-- TODO remove once quarkus-oidc-client-graphql is in a release -->
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-graphql-client-deployment</artifactId>
-            <version>999-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc-client-graphql</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-client</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-client-jackson</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-keycloak-admin-client</artifactId>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
 
         <dependency>
@@ -104,7 +81,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
             <scope>test</scope>
-            <version>999-SNAPSHOT</version> <!-- TODO remove once this is in a release -->
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
